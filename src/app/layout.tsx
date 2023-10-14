@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 
 import { mainNavConfig } from '@/config';
 
+import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
 import { Layout } from '@/components/Layout';
 import { MainNav } from '@/components/MainNav';
@@ -26,6 +27,7 @@ export default function RootLayout({
 
         <Layout>
           <div className="pt-20">{children}</div>
+          <Footer items={mainNavConfig} />
         </Layout>
       </body>
     </html>
