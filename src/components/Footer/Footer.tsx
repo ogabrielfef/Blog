@@ -4,6 +4,7 @@ import { siteConfig } from '@/config';
 import { MainNavTypes } from '@/types';
 
 import { Logo } from '../Logo';
+import * as S from './styles';
 
 type FooterProps = {
   items: MainNavTypes;
@@ -11,17 +12,17 @@ type FooterProps = {
 
 export const Footer = ({ items }: FooterProps) => {
   return (
-    <footer>
-      <div>
-        <div role="contentinfo">
+    <S.Container>
+      <S.Content>
+        <S.Section role="contentinfo">
           <Logo />
-          <p>{siteConfig.title}</p>
-        </div>
-        <div role="contentinfo">
-          <p>Redes</p>
-        </div>
-        <div>
-          <p>Sitemap</p>
+          <S.Title>{siteConfig.title}</S.Title>
+        </S.Section>
+        <S.Section role="contentinfo">
+          <S.Title>Redes</S.Title>
+        </S.Section>
+        <S.Section>
+          <S.Title>Sitemap</S.Title>
           <ul>
             {items.mainNav.map((item) => (
               <li key={item.title}>
@@ -29,9 +30,11 @@ export const Footer = ({ items }: FooterProps) => {
               </li>
             ))}
           </ul>
-        </div>
-      </div>
-      <div>Make by ogabrielfef</div>
-    </footer>
+        </S.Section>
+      </S.Content>
+      <S.CopyrightContainer>
+        <S.Copyright>Make by ogabrielfef</S.Copyright>
+      </S.CopyrightContainer>
+    </S.Container>
   );
 };
