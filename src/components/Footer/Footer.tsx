@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
 import { siteConfig } from '@/config';
-import { MainNavTypes } from '@/types';
+import { NavItemTypes } from '@/types';
 
 import { Logo } from '../Logo';
 import * as S from './styles';
 
 type FooterProps = {
-  items: MainNavTypes;
+  items: NavItemTypes[];
 };
 
 export const Footer = ({ items }: FooterProps) => {
@@ -24,7 +24,7 @@ export const Footer = ({ items }: FooterProps) => {
         <S.Section>
           <S.Title>Sitemap</S.Title>
           <ul>
-            {items.mainNav.map((item) => (
+            {items.map((item) => (
               <li key={item.title}>
                 <Link href={item.href}>{item.title}</Link>
               </li>

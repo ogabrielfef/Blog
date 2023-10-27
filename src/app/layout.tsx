@@ -27,7 +27,7 @@ export default function RootLayout({
 
         <Layout>
           <div className="pt-20">{children}</div>
-          <Footer items={mainNavConfig} />
+          <Footer items={mainNavConfig.mainNav} />
         </Layout>
       </body>
     </html>
