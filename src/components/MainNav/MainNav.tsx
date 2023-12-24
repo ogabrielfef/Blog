@@ -4,6 +4,8 @@ import Link from 'next/link';
 
 import { MainNavTypes } from '@/types';
 
+import { List, ListItem } from '@/components/List';
+
 import { ToggleButton } from './components';
 import { useMainNav } from './hooks';
 import * as S from './styles';
@@ -18,13 +20,13 @@ export const MainNav = ({ items }: MainNavProps) => {
   return (
     <>
       <S.Nav>
-        <S.List>
+        <List>
           {items.mainNav.map((menu) => (
-            <S.ListItem key={menu.title}>
+            <ListItem key={menu.title}>
               <Link href={menu.href}>{menu.title}</Link>
-            </S.ListItem>
+            </ListItem>
           ))}
-        </S.List>
+        </List>
       </S.Nav>
 
       <S.Content>
