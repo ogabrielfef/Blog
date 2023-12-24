@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { siteConfig } from '@/config';
 import { NavItemTypes } from '@/types';
 
+import { List, ListItem } from '@/components/List';
+
 import { Logo } from '../Logo';
 import * as S from './styles';
 
@@ -23,13 +25,13 @@ export const Footer = ({ items }: FooterProps) => {
         </S.Section>
         <S.Section>
           <S.Title>Sitemap</S.Title>
-          <ul>
+          <List className="flex-col">
             {items.map((item) => (
-              <li key={item.title}>
+              <ListItem key={item.title}>
                 <Link href={item.href}>{item.title}</Link>
-              </li>
+              </ListItem>
             ))}
-          </ul>
+          </List>
         </S.Section>
       </S.Content>
       <S.CopyrightContainer>
