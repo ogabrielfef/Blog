@@ -1,6 +1,6 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "tailwindCSS.includeLanguages": {
     "typescript": "javascript", // if you are using typescript

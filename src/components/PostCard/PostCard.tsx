@@ -1,41 +1,47 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { formatDate } from '@/functions';
+import { BlogPost } from '@/types';
+
 import { Tag } from '@/components/Tag';
 
-export const PostCard = () => {
+import * as S from './styles';
+
+type PostCardProps = {
+  post: BlogPost;
+};
+
+export const PostCard = ({ post }: PostCardProps) => {
+  const { frontmatter, readingTime, slug } = post;
+  const { title, description, date, image, tags } = frontmatter;
+
   return (
     <>
-      <Link href="#">
-        <div className="relative h-80 w-full">
+      <Link href={slug}>
+        <S.ImageContainer>
           <Image
-            src="/assets/images/image.png"
+            src={image}
             fill
             alt="title"
             priority
             className="rounded-xl object-cover object-center"
           />
-        </div>
+        </S.ImageContainer>
 
-        <div className="pt-3">
-          <div className="mb-3 flex flex-wrap gap-2">
-            {['ts', 'js', 'react'].map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
-            ))}
-          </div>
+        <S.Content>
+          <S.TagsContainer>
+            {tags?.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          </S.TagsContainer>
 
-          <time className="text-gray-400">
-            15 de maio de 2023 • 3 minutos de leitura
-          </time>
+          <S.Time>
+            {formatDate(date)} • {readingTime} minutos de leitura
+          </S.Time>
 
-          <p className="mt-2 max-w-md text-ellipsis text-2xl font-medium text-gray-50">
-            O que é o que é?
-          </p>
+          <S.Title>{title}</S.Title>
 
-          <p className="mr-3 text-gray-400">
-            Vamos conhecer mais sobre o tema. Onde habita? oque faz?
-          </p>
-        </div>
+          <S.Description>{description}</S.Description>
+        </S.Content>
       </Link>
     </>
   );
